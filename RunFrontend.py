@@ -16,7 +16,7 @@ class SetupFrontend(object):
         app.register_blueprint(telephone_frontend, url_prefix='/addressBooks')
         app.register_blueprint(address_frontend, url_prefix='/addressBooks')
         print(app.template_folder)
-        app.run(port=80)
+        app.run(port=8080)
 
 
 if __name__ == '__main__':

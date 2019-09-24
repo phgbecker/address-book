@@ -15,9 +15,6 @@ class AddressBook(Base):
     def __init__(self, description):
         self.description = description
 
-    def get_owner(self):
-        return '1'
-
     def to_dict(self, show_dependencies=False):
         data = {
             'id': self.id,

@@ -1,7 +1,7 @@
 from flask import Blueprint
 from sqlalchemy.sql.expression import extract
 
-from SetupService import Session
+from RunService import Session
 from model.AddressBook import AddressBook
 from model.Contact import Contact
 from service.util.ResponseUtil import ResponseUtil
@@ -26,7 +26,8 @@ def get_contact_by_id(address_book_id, id):
             .join(AddressBook)
             .filter(AddressBook.id == address_book_id)
             .filter(Contact.id == id)
-            .first()
+            .first(),
+        True
     )
 
 

@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import Blueprint, render_template, request, redirect
 
-from SetupService import Session
+from RunService import Session
 from model.AddressBook import AddressBook
 from model.Contact import Contact
 

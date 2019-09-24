@@ -1,9 +1,10 @@
 import datetime
+from pathlib import Path
+from unittest import TestCase
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from SetupService import Session
 from model import Base
 from model.Address import Address
 from model.AddressBook import AddressBook
@@ -13,17 +14,17 @@ from model.Owner import Owner
 from model.Telephone import Telephone
 from model.TelephoneType import TelephoneType
 
-# SQLAlchemy variables
-engine = create_engine('sqlite:///address-book.db', echo=True)
-Base.metadata.drop_all(engine)
-Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
 
+class TestAddressBook(TestCase):
+    # SQLAlchemy variables
+    database_path = Path(__file__).parent.parent
+    engine = create_engine('sqlite:///{}/address-book.db'.format(database_path), echo=True)
 
-class SetupDatabase(object):
+    def test_create_database(self):
+        Base.metadata.drop_all(self.engine)
+        Base.metadata.create_all(self.engine)
 
-    @staticmethod
-    def setup():
+    def test_populate_database(self):
         # Stranger Things
         jane_hopper_contact = Contact('Jane Hopper', datetime.date(1990, 3, 22))
         jane_hopper_contact.addresses = [
@@ -74,12 +75,10 @@ class SetupDatabase(object):
         back_to_the_future_address_book.owner = Owner('Emmett Brown')
         back_to_the_future_address_book.contacts = [marty_mcfly_contact, jennifer_parker_contact]
 
+        Session = sessionmaker(bind=self.engine)
+
         session = Session()
         session.add(stranger_things_address_book)
         session.add(back_to_the_future_address_book)
         session.commit()
         session.close()
-
-
-if __name__ == '__main__':
-    SetupDatabase.setup()

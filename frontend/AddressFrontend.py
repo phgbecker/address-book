@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect
 
-from SetupService import Session
+from RunService import Session
 from model.Address import Address
 from model.AddressType import AddressType
 from model.Contact import Contact

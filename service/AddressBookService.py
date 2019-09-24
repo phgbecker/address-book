@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from SetupService import Session
+from RunService import Session
 from model.AddressBook import AddressBook
 from service.util.ResponseUtil import ResponseUtil
 

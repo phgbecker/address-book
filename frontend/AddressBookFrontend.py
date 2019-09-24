@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from SetupService import Session
+from RunService import Session
 from model.AddressBook import AddressBook
 
 address_book_frontend = Blueprint(
