@@ -3,7 +3,11 @@
 Address Book frontend application and backend service, developed with Python, SQLAlchemy and Flask
 
 ## Frontend application
+- Path
     - http://{host}/addressBooks/
+
+- Screenshot
+    ![Frontend](Screenshot.png)
 
 ## API endpoints
 
