@@ -7,6 +7,7 @@ Address Book frontend application and backend service, developed with Python, SQ
     - http://{host}/addressBooks/
 
 - Screenshot
+
     ![Frontend](Screenshot.png)
 
 ## API endpoints
