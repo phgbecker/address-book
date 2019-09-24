@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% block title %}{{ address_book.description }}{% endblock %}
+{% block content %}
+<table>
+    <caption>{{ address_book.owner.name }}'s Address Book</caption>
+    <th><span class="customerIcon"></span>Contacts</th>
+    {% if address_book.contacts | length > 0 %}
+        {% for contact in address_book.contacts %}
+        <tr>
+            <td><a href="{{ request.path }}/contacts/{{ contact.id }}">{{ contact.name }}</a></td>
+        </tr>
+        {% endfor %}
+    {% else %}
+    <tr>
+        <td>No contacts</td>
+    </tr>
+    {% endif %}
+</table>
+
+<ul class="tileActions">
+    <a href="/addressBooks"><li class="tile goBackIcon">Back</li></a>
+    <a href="{{ request.path }}/contacts"><li class="tile addIcon">Add</li></a>
+</ul>
+
+{% endblock %}

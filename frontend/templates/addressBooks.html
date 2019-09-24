@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% block title %}Application{% endblock %}
+{% block content %}
+<ul class="tileMainPage">
+    {% if address_books | length > 0 %}
+        {% for address_book in address_books %}
+        <a href="/addressBooks/{{ address_book.id }}">
+            <li class="tile addressBook">{{ address_book.description}}</li>
+        </a>
+        {% endfor %}
+    {% else %}
+    No Address Books available
+    {% endif %}
+</ul>
+{% endblock %}

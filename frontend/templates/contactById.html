@@ -1,0 +1,54 @@
+{% extends "template.html" %}
+{% block title %}{{ contact.name }}{% endblock %}
+{% block content %}
+<div class="content">
+    <form id="contactForm" action="{{ request.path }}/update" method="post">
+        <input id="{{ contact.id }}" type="hidden" name="id">
+        <input id="name" type="text" name="name" class="productIcon" placeholder="Name" value="{{ contact.name }}" required><br>
+        <input id="birthday" type="text" name="birthday" class="productIcon" value="{{ contact.birthday }}" placeholder="Birthday" required>
+    </form>
+
+    <table>
+        <th><span class="telephoneIcon"></span>Telephones</th>
+        {% if contact.telephones | length > 0 %}
+            {% for telephone in contact.telephones %}
+            <tr>
+                <td><a href="{{ request.path }}/telephone/{{ telephone.id }}">{{ telephone.number}} ({{telephone.type.name}})</a></td>
+            </tr>
+            {% endfor %}
+        {% else %}
+        <tr>
+            <td>No telephones</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td><a href="{{ request.path }}/telephone">+ Add</a></td>
+        </tr>
+    </table>
+
+    <table>
+        <th><span class="addressIcon"></span>Addresses</th>
+        {% if contact.addresses | length > 0 %}
+            {% for address in contact.addresses %}
+            <tr>
+                <td><a href="{{ request.path }}/address/{{ address.id }}">{{ address.name}} ({{address.type.name}})</a></td>
+            </tr>
+            {% endfor %}
+        {% else %}
+        <tr>
+            <td>No addresses</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td><a href="{{ request.path }}/address">+ Add</a></td>
+        </tr>
+    </table>
+
+</div>
+
+<ul class="tileActions">
+    <a href="/addressBooks/{{ contact.address_book_id }}"><li class="tile goBackIcon">Back</li></a>
+    <a href="{{ request.path }}/delete"><li class="tile deleteIcon">Remove</li></a>
+    <a onclick="getElementById('contactForm').submit();"><li class="tile saveIcon">Save</li></a>
+</ul>
+{% endblock %}

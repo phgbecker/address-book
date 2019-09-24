@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block title %}Address{% endblock %}
+{% block content %}
+<div class="content">
+    <form id="addressForm" action="{{ request.path }}/update" method="post">
+        <input id="{{ address.id }}" type="hidden" name="id">
+        <input id="name" type="text" name="name" class="productIcon" placeholder="Number" value="{{ address.name }}" required><br>
+    </form>
+</div>
+
+<ul class="tileActions">
+    <a href="/addressBooks/{{ address_book_id }}/contacts/{{ contact_id }}"><li class="tile goBackIcon">Back</li></a>
+    <a href="{{ request.path }}/delete"><li class="tile deleteIcon">Remove</li></a>
+    <a onclick="getElementById('addressForm').submit();"><li class="tile saveIcon">Save</li></a>
+</ul>
+{% endblock %}
