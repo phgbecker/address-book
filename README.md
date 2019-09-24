@@ -24,6 +24,16 @@ Address Book frontend application and backend service, developed with Python, SQ
     - http://{host}:{port}/api/addressBooks/{id}/contacts/{id}/birthday/month/{month}
     - http://{host}:{port}/api/addressBooks/{id}/contacts/{id}/birthday/day/{day}
 
+## How to run
+- Frontend
+    - Run class: RunFrontend.py
+
+- Service
+    - Run class: RunService.py
+    
+- Populate database
+    - Run class: test_testAddressBook.py
+
 ## ORM diagram
 
 ![ORM diagram](ORM%20diagram.png)
