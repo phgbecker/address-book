@@ -20,7 +20,7 @@ class SetupService(object):
         app = Flask('Address Book Service', root_path='frontend/')
         app.register_blueprint(address_book_service, url_prefix='/api/addressBooks')
         app.register_blueprint(contact_service, url_prefix='/api/addressBooks')
-        app.run(port=8081)
+        app.run(port=8080)
 
 
 if __name__ == '__main__':
